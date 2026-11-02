@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import './globals.css'
 
-const SITE_URL = 'https://fgnzsj.github.io/dataexp'
+const SITE_URL = 'https://fjr-data.github.io/dataexp'
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -12,8 +12,7 @@ const jsonLd = {
       name: 'DataInsight',
       url: SITE_URL,
       description:
-        'Consultoria especializada em dados e templates de dashboards para Power BI, Tableau e Google Data Studio.',
-      foundingDate: '2018',
+        'Engenharia de dados e IA no modelo forward deployed: embarcada no time do cliente, do CRM ao BI e a agentes de IA em produção.',
       areaServed: 'BR',
       knowsLanguage: 'pt-BR',
       contactPoint: {
@@ -33,21 +32,21 @@ const jsonLd = {
     {
       '@type': 'Service',
       '@id': `${SITE_URL}/#consultoria`,
-      name: 'Consultoria Estratégica de Dados',
+      name: 'Discovery e Deploy Embarcado de Dados',
       provider: { '@id': `${SITE_URL}/#organization` },
       description:
-        'Diagnóstico profundo dos seus dados com estratégia clara de implementação e KPIs que geram resultado real.',
-      serviceType: 'Data Analytics Consulting',
+        'Engenheiro embarcado no seu time para mapear dados de CRM e colocar em produção BI, integrações e KPIs que geram decisão.',
+      serviceType: 'Forward Deployed Data Engineering',
       areaServed: 'BR',
     },
     {
       '@type': 'Service',
-      '@id': `${SITE_URL}/#templates`,
-      name: 'Templates de Dashboards',
+      '@id': `${SITE_URL}/#agentes`,
+      name: 'Agentes de IA e Automação',
       provider: { '@id': `${SITE_URL}/#organization` },
       description:
-        'Dashboards profissionais compatíveis com Power BI, Tableau e Google Data Studio, prontos para usar em dias.',
-      serviceType: 'Business Intelligence Dashboard',
+        'Agentes de IA e automações conectados ao seu CRM e BI via MCP e APIs, com avaliação de qualidade antes do go-live.',
+      serviceType: 'AI Agent Deployment',
       areaServed: 'BR',
     },
   ],
@@ -55,25 +54,25 @@ const jsonLd = {
 
 export const metadata: Metadata = {
   title: {
-    default: 'DataInsight - Consultoria e Templates de Dashboards',
+    default: 'DataInsight - Dados e IA embarcados no seu time',
     template: '%s | DataInsight',
   },
   description:
-    'Consultoria especializada e templates prontos para Power BI, Tableau e Google Data Studio. Transforme dados em decisões estratégicas.',
+    'Engenharia de dados e IA no modelo forward deployed: do CRM (Salesforce, Dynamics 365) ao Power BI e a agentes de IA em produção, no stack que você já usa.',
   openGraph: {
     type: 'website',
     url: `${SITE_URL}/`,
-    title: 'DataInsight - Consultoria e Templates de Dashboards',
+    title: 'DataInsight - Dados e IA embarcados no seu time',
     description:
-      'Consultoria especializada e templates prontos para Power BI, Tableau e Google Data Studio. Transforme dados em decisões estratégicas com mais de 200 empresas atendidas desde 2018.',
+      'Do CRM ao BI e a agentes de IA em produção: engenharia de dados no modelo forward deployed, no stack que você já usa.',
     locale: 'pt_BR',
     siteName: 'DataInsight',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'DataInsight - Consultoria e Templates de Dashboards',
+    title: 'DataInsight - Dados e IA embarcados no seu time',
     description:
-      'Consultoria especializada e templates de dashboards para impulsionar seu negócio com análises de dados precisas.',
+      'Do CRM ao BI e a agentes de IA em produção: engenharia de dados no modelo forward deployed.',
   },
   robots: { index: true, follow: true },
   alternates: { canonical: `${SITE_URL}/` },

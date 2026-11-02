@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: 'Política de Privacidade',
@@ -6,7 +7,7 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 }
 
-const LAST_UPDATE = '19 de março de 2026'
+const LAST_UPDATE = '2 de novembro de 2026'
 
 export default function PrivacidadePage() {
   return (
@@ -14,12 +15,12 @@ export default function PrivacidadePage() {
       {/* Header */}
       <header className="border-b">
         <div className="mx-auto flex h-16 max-w-4xl items-center justify-between px-4 md:px-6">
-          <a href="/" className="text-xl font-bold tracking-tight text-primary">
+          <Link href="/" className="text-xl font-bold tracking-tight text-primary">
             DataInsight
-          </a>
-          <a href="/" className="text-sm text-muted-foreground hover:text-foreground">
+          </Link>
+          <Link href="/" className="text-sm text-muted-foreground hover:text-foreground">
             ← Voltar ao site
-          </a>
+          </Link>
         </div>
       </header>
 
@@ -71,16 +72,24 @@ export default function PrivacidadePage() {
             </p>
             <ul>
               <li>
-                <strong>Formspree (formspree.io)</strong> — serviço de processamento de formulários
-                web. Consulte a{' '}
-                <a href="https://formspree.io/legal/privacy-policy" target="_blank" rel="noopener noreferrer"
+                <strong>Web3Forms (web3forms.com)</strong> — serviço que recebe o formulário de
+                contato e o encaminha por e-mail. Consulte a{' '}
+                <a href="https://web3forms.com/privacy" target="_blank" rel="noopener noreferrer"
                   className="text-primary underline">
-                  política de privacidade do Formspree
+                  política de privacidade do Web3Forms
+                </a>.
+              </li>
+              <li>
+                <strong>hCaptcha (hcaptcha.com)</strong> — verificação anti-spam exibida no
+                formulário. Consulte a{' '}
+                <a href="https://www.hcaptcha.com/privacy" target="_blank" rel="noopener noreferrer"
+                  className="text-primary underline">
+                  política de privacidade do hCaptcha
                 </a>.
               </li>
               <li>
                 <strong>GitHub Pages</strong> — hospedagem deste site. Consulte a{' '}
-                <a href="https://docs.github.com/pt/site-policy/privacy-policies/github-privacy-statement"
+                <a href="https://docs.github.com/pt/site-policy/privacy-policies/github-general-privacy-statement"
                   target="_blank" rel="noopener noreferrer" className="text-primary underline">
                   declaração de privacidade do GitHub
                 </a>.
@@ -90,8 +99,9 @@ export default function PrivacidadePage() {
 
           <Section title="5. Armazenamento e retenção">
             <p>
-              Seus dados são armazenados nos servidores do Formspree enquanto mantemos um
-              relacionamento comercial ativo com você. Dados de contatos que não evoluem para
+              As mensagens recebidas ficam na nossa caixa de e-mail enquanto mantemos um
+              relacionamento comercial ativo com você. O Web3Forms pode reter uma cópia da submissão
+              pelo período definido em sua própria política e nas configurações do formulário. Dados de contatos que não evoluem para
               clientes são excluídos em até <strong>24 meses</strong> após o último contato.
             </p>
           </Section>
@@ -120,8 +130,9 @@ export default function PrivacidadePage() {
             <p>
               Este site é uma página estática e <strong>não utiliza cookies de rastreamento</strong>,
               pixels de marketing, Google Analytics ou qualquer tecnologia de rastreamento de
-              comportamento. Não há cookies de terceiros além dos necessários para o funcionamento
-              do Formspree ao submeter o formulário de contato.
+              comportamento. Os únicos recursos de terceiros são os necessários para o formulário de
+              contato: o Web3Forms (envio) e o hCaptcha (anti-spam), que pode usar cookies próprios
+              para a verificação.
             </p>
           </Section>
 
@@ -153,7 +164,7 @@ export default function PrivacidadePage() {
 
       <footer className="border-t py-6 text-center text-xs text-muted-foreground">
         © {new Date().getFullYear()} DataInsight. Todos os direitos reservados. ·{' '}
-        <a href="/termos" className="hover:underline">Termos de Uso</a>
+        <Link href="/termos/" className="hover:underline">Termos de Uso</Link>
       </footer>
     </div>
   )

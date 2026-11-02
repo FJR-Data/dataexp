@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://fgnzsj.github.io/dataexp/sitemap.xml
+Sitemap: https://fjr-data.github.io/dataexp/sitemap.xml

@@ -1,43 +1,58 @@
 'use client'
 
 import { useState } from 'react'
+import Link from 'next/link'
 import DashboardMockup from '@/components/DashboardMockup'
 
 const NAV_LINKS = [
   { href: '#servicos', label: 'Serviços' },
-  { href: '#templates', label: 'Templates' },
-  { href: '#depoimentos', label: 'Depoimentos' },
+  { href: '#como-funciona', label: 'Como funciona' },
+  { href: '#experiencia', label: 'Experiência' },
   { href: '#precos', label: 'Preços' },
 ]
 
 const SERVICES = [
   {
-    badge: 'Consultoria',
-    title: 'Consultoria Estratégica',
+    badge: 'Discovery',
+    title: 'Diagnóstico Embarcado',
     description:
-      'Diagnóstico profundo dos seus dados com estratégia clara de implementação e KPIs que geram resultado real.',
+      'Entro na rotina do seu time comercial para mapear processos, fontes de dados e decisões que precisam de número confiável.',
     features: [
-      'Diagnóstico completo de dados',
-      'Implementação de KPIs estratégicos',
-      'Treinamento para equipes',
-      'Suporte contínuo especializado',
+      'Entrevistas com quem usa o dado no dia a dia',
+      'Auditoria de qualidade do CRM',
+      'Mapa de KPIs ligado a decisões reais',
+      'Plano de deploy priorizado por impacto',
+    ],
+    cta: 'Solicitar Diagnóstico',
+    href: '#contato',
+  },
+  {
+    badge: 'Deploy',
+    title: 'CRM + BI em Produção',
+    description:
+      'Integração e saneamento de dados de Salesforce ou Dynamics 365 e painéis Power BI conectados à fonte, em produção, não em slide.',
+    features: [
+      'Migração e mapeamento de dados de CRM',
+      'Modelagem SQL e painéis Power BI',
+      'Automação de rotinas e auditorias',
+      'Documentação e handoff para o seu time',
     ],
     cta: 'Solicitar Proposta',
     href: '#contato',
   },
   {
-    badge: 'Produto',
-    title: 'Templates de Dashboards',
+    badge: 'IA',
+    title: 'Agentes de IA & Automação',
     description:
-      'Dashboards profissionais compatíveis com Power BI, Tableau e Google Data Studio — prontos para usar em dias.',
+      'Agentes de IA conectados ao seu CRM e BI via MCP e APIs, com testes de qualidade antes do go-live e humano no controle.',
     features: [
-      'Dashboards para diversos setores',
-      'Personalização conforme necessidade',
-      'Compatível com várias plataformas',
-      'Atualizações regulares',
+      'Casos de uso priorizados por ROI',
+      'Integração via MCP, APIs e Python',
+      'Avaliação de qualidade (evals) antes do go-live',
+      'Governança: dados no seu ambiente, LGPD',
     ],
-    cta: 'Ver Templates',
-    href: '#templates',
+    cta: 'Falar sobre IA',
+    href: '#contato',
   },
 ]
 
@@ -77,53 +92,57 @@ const TEMPLATES = [
 const STEPS = [
   {
     number: '01',
-    title: 'Diagnóstico',
-    description: 'Analisamos suas fontes de dados, processos atuais e principais dores do negócio.',
+    title: 'Discovery embarcado',
+    description: 'Trabalho junto do seu time para entender o processo, as fontes de dados e a decisão que precisa melhorar.',
   },
   {
     number: '02',
-    title: 'Customização',
-    description: 'Adaptamos os templates e KPIs à sua realidade, ferramentas e objetivos.',
+    title: 'Protótipo com dado real',
+    description: 'Primeira versão rodando sobre os seus dados, validada com quem vai usar, antes de escalar.',
   },
   {
     number: '03',
-    title: 'Implementação',
-    description: 'Entregamos os dashboards conectados às suas fontes em dias, não meses.',
+    title: 'Deploy no seu stack',
+    description: 'Painéis, integrações e agentes em produção nas ferramentas que você já tem, sem lock-in.',
   },
   {
     number: '04',
-    title: 'Suporte',
-    description: 'Treinamos sua equipe e acompanhamos a evolução com suporte contínuo.',
+    title: 'Handoff & métricas',
+    description: 'Documentação, treinamento e indicadores de adoção e impacto para o seu time operar sozinho.',
   },
 ]
 
 const INTEGRATIONS = [
+  { name: 'Salesforce', color: 'text-sky-600' },
+  { name: 'Dynamics 365', color: 'text-blue-700' },
   { name: 'Power BI', color: 'text-yellow-600' },
-  { name: 'Tableau', color: 'text-blue-600' },
-  { name: 'Google Data Studio', color: 'text-green-600' },
-  { name: 'Metabase', color: 'text-indigo-600' },
-  { name: 'Looker', color: 'text-purple-600' },
-  { name: 'Grafana', color: 'text-orange-600' },
+  { name: 'SQL', color: 'text-slate-700' },
+  { name: 'Python', color: 'text-blue-600' },
+  { name: 'Claude + MCP', color: 'text-orange-600' },
+  { name: 'Tableau', color: 'text-indigo-600' },
+  { name: 'Looker Studio', color: 'text-green-600' },
 ]
 
-const TESTIMONIALS = [
+const EXPERIENCE = [
   {
-    initials: 'AS',
-    name: 'Ana Silva',
-    role: 'Diretora de Marketing, TechCorp',
-    text: 'Em 6 semanas de consultoria, identificamos gargalos que custavam R$80k/mês. Os dashboards do DataInsight mudaram como toda a diretoria enxerga o negócio.',
+    sector: 'Software B2B (CAD/BIM)',
+    title: 'Operações comerciais e migração de CRM',
+    text: 'Painéis de BI comercial, integração e saneamento de dados durante migração para Salesforce, e automação de rotinas de Sales Ops.',
   },
   {
-    initials: 'CM',
-    name: 'Carlos Mendes',
-    role: 'CEO, Retail Solutions',
-    text: 'Implementamos o dashboard de vendas em 2 semanas. Antes levávamos 3 dias para fechar o relatório mensal — hoje é automático e atualizado em tempo real.',
+    sector: 'Big tech',
+    title: 'Auditorias automatizadas de CRM',
+    text: 'Centralização de processos de Sales Ops em Dynamics 365, com auditorias de qualidade de dados documentadas e automatizadas.',
   },
   {
-    initials: 'MC',
-    name: 'Mariana Costa',
-    role: 'Gerente de BI, Finance Group',
-    text: 'Nossa equipe de BI ganhou autonomia total. O treinamento foi objetivo e as atualizações periódicas garantem que estamos sempre usando o que há de melhor no mercado.',
+    sector: 'Varejo de autopeças',
+    title: 'Classificação de catálogo e KPIs',
+    text: 'Organização da busca de peças por clientes, agrupamento de peças por uso e similaridade, e KPIs internos com Python, SQL e Power BI.',
+  },
+  {
+    sector: 'Bens de consumo',
+    title: 'Otimização de verba de marketing',
+    text: 'Realocação de budget entre categorias com dados de mercado (Kantar, Euromonitor): ROI 7,57% maior na alocação otimizada.',
   },
 ]
 
@@ -174,8 +193,16 @@ const FAQS = [
     a: 'Para templates do catálogo, a implementação leva de 3 a 10 dias úteis após o diagnóstico inicial. Projetos personalizados têm prazo definido na proposta, geralmente entre 2 e 6 semanas.',
   },
   {
-    q: 'Os templates funcionam com minha ferramenta atual?',
-    a: 'Sim. Nossos templates são compatíveis com Power BI, Tableau, Google Data Studio, Metabase, Looker e Grafana. Indicamos a melhor opção para o seu contexto durante o diagnóstico.',
+    q: 'O que significa trabalhar no modelo forward deployed?',
+    a: 'Em vez de entregar um relatório e ir embora, o engenheiro trabalha junto do seu time, dentro das suas ferramentas, até a solução estar em produção e sendo usada. O foco é adoção e impacto medido, não horas de consultoria.',
+  },
+  {
+    q: 'Funciona com as ferramentas que já usamos?',
+    a: 'Sim. Trabalhamos sobre o seu stack: Salesforce ou Dynamics 365 no CRM, SQL e Python nos dados, Power BI, Tableau ou Looker Studio na visualização. Indicamos a melhor opção para o seu contexto durante o diagnóstico.',
+  },
+  {
+    q: 'Como vocês usam IA com os dados da minha empresa?',
+    a: 'Só com casos de uso aprovados por você, conectando o agente às suas fontes via MCP ou APIs, com testes de qualidade antes do go-live e revisão humana nas decisões críticas. Os dados permanecem no seu ambiente e nas contas de IA contratadas pela sua empresa.',
   },
   {
     q: 'Preciso ter uma equipe técnica para usar os dashboards?',
@@ -280,15 +307,14 @@ export default function Home() {
             <div className="grid gap-6 lg:grid-cols-[1fr_500px] lg:gap-12 xl:grid-cols-[1fr_550px]">
               <div className="flex flex-col justify-center gap-4">
                 <span className="inline-flex w-fit items-center rounded-full bg-primary px-3 py-1 text-xs font-medium text-primary-foreground">
-                  Consultoria de Dados
+                  Dados &amp; IA · Forward Deployed
                 </span>
                 <h1 className="text-3xl font-bold tracking-tight sm:text-5xl xl:text-6xl">
-                  Transforme seus dados em decisões estratégicas
+                  Dados e IA em produção, construídos dentro do seu time
                 </h1>
                 <p className="max-w-[600px] text-muted-foreground md:text-xl">
-                  Consultoria especializada e templates prontos para Power BI, Tableau e Google Data
-                  Studio. Transforme dados em decisões estratégicas com mais de 200 empresas atendidas
-                  desde 2018.
+                  Um engenheiro embarcado na sua operação comercial: do CRM bagunçado ao Power BI
+                  confiável e a agentes de IA que economizam horas do time, no stack que você já usa.
                 </p>
 
                 <div className="flex flex-col gap-2 min-[400px]:flex-row">
@@ -296,22 +322,22 @@ export default function Home() {
                     href="#contato"
                     className="inline-flex items-center justify-center rounded-md bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
                   >
-                    Agendar Consultoria
+                    Agendar Diagnóstico
                   </a>
                   <a
-                    href="#templates"
+                    href="#como-funciona"
                     className="inline-flex items-center justify-center rounded-md border px-6 py-3 text-sm font-medium transition-colors hover:bg-muted"
                   >
-                    Ver Templates
+                    Como funciona
                   </a>
                 </div>
 
                 {/* Metrics */}
                 <div className="flex gap-8 pt-2">
                   {[
-                    { value: '+200', label: 'Empresas Atendidas' },
-                    { value: '8+', label: 'Anos de Experiência' },
-                    { value: '98%', label: 'Satisfação' },
+                    { value: '12 anos', label: 'Em tecnologia e dados' },
+                    { value: 'CRM → IA', label: 'Ponta a ponta' },
+                    { value: 'Seu stack', label: 'Sem lock-in' },
                   ].map((m) => (
                     <div key={m.label} className="text-center">
                       <div className="text-2xl font-bold">{m.value}</div>
@@ -334,11 +360,11 @@ export default function Home() {
                 Nossos Serviços
               </span>
               <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
-                Soluções para cada etapa da sua jornada de dados
+                Do diagnóstico ao agente de IA em produção
               </h2>
             </div>
 
-            <div className="grid gap-6 md:grid-cols-2">
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               {SERVICES.map((s) => (
                 <div key={s.title} className="flex flex-col rounded-xl border bg-background p-6 shadow-sm">
                   <span className="mb-4 inline-flex w-fit rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
@@ -372,7 +398,7 @@ export default function Home() {
         </section>
 
         {/* ── COMO FUNCIONA ── */}
-        <section className="w-full py-12 md:py-24 lg:py-32">
+        <section id="como-funciona" className="w-full py-12 md:py-24 lg:py-32">
           <div className="mx-auto max-w-7xl px-4 md:px-6">
             <div className="mb-10 flex flex-col items-center gap-2 text-center">
               <span className="rounded-full bg-primary px-3 py-1 text-xs font-medium text-primary-foreground">
@@ -380,7 +406,7 @@ export default function Home() {
               </span>
               <h2 className="text-3xl font-bold tracking-tight md:text-4xl">Como funciona</h2>
               <p className="max-w-[600px] text-muted-foreground">
-                Do diagnóstico à operação em produção — um processo claro, sem surpresas.
+                O ciclo forward deployed: descobrir no campo, provar com dado real, colocar em produção e medir.
               </p>
             </div>
 
@@ -409,10 +435,10 @@ export default function Home() {
                 Templates
               </span>
               <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
-                Dashboards para cada setor
+                Aceleradores para cada área
               </h2>
               <p className="max-w-[600px] text-muted-foreground">
-                Soluções prontas para os principais setores, customizáveis para o seu negócio.
+                Templates de painéis que encurtam o deploy: partimos de um modelo testado e adaptamos aos seus dados.
               </p>
             </div>
 
@@ -444,7 +470,7 @@ export default function Home() {
         <section className="w-full py-12 md:py-16">
           <div className="mx-auto max-w-7xl px-4 md:px-6">
             <p className="mb-8 text-center text-sm font-medium text-muted-foreground">
-              Compatível com as principais plataformas de BI
+              Trabalhamos sobre o stack que você já tem
             </p>
             <div className="flex flex-wrap items-center justify-center gap-6 md:gap-12">
               {INTEGRATIONS.map((tool) => (
@@ -456,31 +482,30 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ── DEPOIMENTOS ── */}
-        <section id="depoimentos" className="w-full bg-muted/30 py-12 md:py-24 lg:py-32">
+        {/* ── EXPERIÊNCIA ── */}
+        <section id="experiencia" className="w-full bg-muted/30 py-12 md:py-24 lg:py-32">
           <div className="mx-auto max-w-7xl px-4 md:px-6">
             <div className="mb-10 flex flex-col items-center gap-2 text-center">
               <span className="rounded-full bg-primary px-3 py-1 text-xs font-medium text-primary-foreground">
-                Depoimentos
+                Experiência
               </span>
               <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
-                O que nossos clientes dizem
+                Problemas que já resolvemos em campo
               </h2>
+              <p className="max-w-[640px] text-muted-foreground">
+                Projetos conduzidos pelo fundador em empresas de diferentes setores. Nomes omitidos
+                por confidencialidade.
+              </p>
             </div>
 
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {TESTIMONIALS.map((t) => (
-                <div key={t.name} className="flex flex-col gap-4 rounded-xl border bg-background p-6 shadow-sm">
-                  <p className="text-muted-foreground">"{t.text}"</p>
-                  <div className="flex items-center gap-3">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-sm font-semibold text-primary-foreground">
-                      {t.initials}
-                    </div>
-                    <div>
-                      <p className="text-sm font-semibold">{t.name}</p>
-                      <p className="text-xs text-muted-foreground">{t.role}</p>
-                    </div>
-                  </div>
+            <div className="grid gap-6 md:grid-cols-2">
+              {EXPERIENCE.map((e) => (
+                <div key={e.title} className="flex flex-col gap-3 rounded-xl border bg-background p-6 shadow-sm">
+                  <span className="inline-flex w-fit rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
+                    {e.sector}
+                  </span>
+                  <h3 className="text-lg font-semibold">{e.title}</h3>
+                  <p className="text-sm text-muted-foreground">{e.text}</p>
                 </div>
               ))}
             </div>
@@ -595,11 +620,11 @@ export default function Home() {
             <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
               <div className="flex flex-col justify-center gap-4 text-primary-foreground">
                 <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
-                  Pronto para transformar seus dados em resultados?
+                  Qual decisão do seu time comercial ainda depende de planilha manual?
                 </h2>
                 <p className="text-primary-foreground/80">
-                  Atendemos até 10 novos clientes por mês. Garanta sua vaga e receba um diagnóstico
-                  gratuito dos seus dados.
+                  Trabalhamos com poucos projetos simultâneos para manter o modelo embarcado. Conte o
+                  desafio e receba um diagnóstico inicial gratuito.
                 </p>
                 <div className="flex flex-col gap-3 pt-2">
                   {[
@@ -630,7 +655,7 @@ export default function Home() {
                   <textarea
                     name="mensagem"
                     rows={3}
-                    placeholder="Conte brevemente o seu maior desafio com dados (opcional)"
+                    placeholder="Ex.: forecast de vendas manual, CRM com dados duplicados, ideia de agente de IA (opcional)"
                     className={`${inputClass} resize-none`}
                   />
                   <div className="h-captcha" data-captcha="true" />
@@ -657,7 +682,7 @@ export default function Home() {
             <div>
               <p className="mb-2 text-lg font-bold">DataInsight</p>
               <p className="text-sm text-muted-foreground">
-                Transformando dados em decisões estratégicas desde 2018.
+                Dados e IA em produção, construídos dentro do seu time.
               </p>
             </div>
             <div>
@@ -677,12 +702,12 @@ export default function Home() {
             <div>
               <p className="mb-3 text-sm font-semibold">Legal</p>
               <div className="flex flex-col gap-2">
-                <a href="/privacidade" className="text-sm text-muted-foreground hover:text-foreground">
+                <Link href="/privacidade/" className="text-sm text-muted-foreground hover:text-foreground">
                   Política de Privacidade
-                </a>
-                <a href="/termos" className="text-sm text-muted-foreground hover:text-foreground">
+                </Link>
+                <Link href="/termos/" className="text-sm text-muted-foreground hover:text-foreground">
                   Termos de Uso
-                </a>
+                </Link>
               </div>
             </div>
           </div>

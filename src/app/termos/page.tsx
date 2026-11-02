@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: 'Termos de Uso',
@@ -13,12 +14,12 @@ export default function TermosPage() {
     <div className="min-h-screen bg-background">
       <header className="border-b">
         <div className="mx-auto flex h-16 max-w-4xl items-center justify-between px-4 md:px-6">
-          <a href="/" className="text-xl font-bold tracking-tight text-primary">
+          <Link href="/" className="text-xl font-bold tracking-tight text-primary">
             DataInsight
-          </a>
-          <a href="/" className="text-sm text-muted-foreground hover:text-foreground">
+          </Link>
+          <Link href="/" className="text-sm text-muted-foreground hover:text-foreground">
             ← Voltar ao site
-          </a>
+          </Link>
         </div>
       </header>
 
@@ -39,12 +40,18 @@ export default function TermosPage() {
             <p>A DataInsight oferece:</p>
             <ul>
               <li>
-                <strong>Consultoria estratégica de dados</strong> — análise, implementação de KPIs
-                e treinamento de equipes, conforme proposta comercial acordada entre as partes.
+                <strong>Discovery e deploy embarcado de dados</strong> — diagnóstico, integração de
+                CRM, implementação de KPIs, painéis e treinamento de equipes, conforme proposta
+                comercial acordada entre as partes.
+              </li>
+              <li>
+                <strong>Agentes de IA e automações</strong> — desenvolvimento e implantação no
+                ambiente do cliente, sujeitos aos termos dos provedores de IA e de software
+                contratados pelo próprio cliente.
               </li>
               <li>
                 <strong>Templates de dashboards</strong> — modelos pré-configurados para Power BI,
-                Tableau e Google Data Studio, entregues mediante licença de uso.
+                Tableau e Looker Studio, entregues mediante licença de uso.
               </li>
             </ul>
             <p>
@@ -149,7 +156,7 @@ export default function TermosPage() {
 
       <footer className="border-t py-6 text-center text-xs text-muted-foreground">
         © {new Date().getFullYear()} DataInsight. Todos os direitos reservados. ·{' '}
-        <a href="/privacidade" className="hover:underline">Política de Privacidade</a>
+        <Link href="/privacidade/" className="hover:underline">Política de Privacidade</Link>
       </footer>
     </div>
   )
